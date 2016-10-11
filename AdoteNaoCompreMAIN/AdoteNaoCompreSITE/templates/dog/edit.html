@@ -1,0 +1,44 @@
+﻿{% extends "header.html" %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+
+<form class="form-inline" action="{% url 'dog_edit' id=dog.Id %}" method="post" enctype="multipart/form-data">
+{% csrf_token %}
+
+{% for field in DogForm %}
+	{% if field.label != "Info" and field.label != "Foto"%}
+		<label>{{field.label}}</label>
+		<p>{{field|add_class:"form-control"}}</p>
+	{% endif %}
+{% endfor %}
+
+<label>Foto</label>
+
+<p><div class="input-group">
+                <label class="input-group-btn">
+                    <span class="btn btn-default">
+                        Selecionar... <input type="file" style="display: none;" name="Foto" required="">
+                    </span>
+                </label>
+                <input type="text" class="form-control" readonly="" required="">
+            </div></p>
+
+<p>Atual: <a href="{{ MEDIA_URL }}{{ dog.Foto.url }}" class="img-rounded"  alt="">{{ dog.Foto }}</a></p>
+
+
+<label>Informações</label>
+<p><textarea rows="4" cols="50" class="form-control" name="Info" required="">{{ DogForm.Info.value }}</textarea></p>
+
+<button type="submit" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true">&nbsp;</span>Salvar
+                </button>
+                
+                        <a href="{% url 'dog_list' %}" class="btn btn-danger" role="button">
+                            <span class="glyphicon glyphicon-remove-circle" aria-hidden="true">&nbsp;</span>Cancelar
+                        </a>
+
+</form>
+
+{% endblock %}

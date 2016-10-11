@@ -1,0 +1,47 @@
+﻿{% extends "header.html" %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+<div class="col-md-3 col-sm-6 hero-feature">
+    <div class="thumbnail">
+        <img src="{{ MEDIA_URL }}{{ dog.Foto.url }}" style="width: 200px; height: 200px"  alt="">
+    </div>
+</div>
+
+<div class="container">
+    <table class="table table-striped">
+
+        <tbody>
+        {% for field in DogForm %}
+                <tr>
+                    <td>
+                        {{ field.label }}
+                    </td>
+                    <td>
+                            {{ field.value }}
+                    </td>
+                </tr>
+            {% endfor %}
+
+            <tr>
+                <td>
+                    Protetor
+                </td>
+                <td>
+                    {{owner.first_name}} {{owner.last_name}}
+                </td>
+
+            </tr>
+
+
+        </tbody>
+    </table>
+
+                        <a href="javascript:history.go(-1)" class="btn btn-success" role="button">
+                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true">&nbsp;</span>Voltar
+                        </a>
+
+
+
+{% endblock %}

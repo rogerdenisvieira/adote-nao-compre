@@ -1,0 +1,92 @@
+﻿{% extends 'header.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div>
+    <h1>Meus Cães</h1>
+
+</div>
+
+<div class="container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Cão</th>
+                <th>Ação</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for c in caes %}
+                <tr>
+                    <td>
+                        {{c.Nome}}
+                    </td>
+                    <td>
+                        <a href="{% url 'dog_show' id=c.Id %}" class="btn btn-info" role="button">
+                            <span class="glyphicon glyphicon-info-sign" aria-hidden="true">&nbsp;</span>Detalhes
+                        </a>
+
+                        <a href="{% url 'dog_edit' id=c.Id %}" class="btn btn-info" role="button">
+                            <span class="glyphicon glyphicon-pencil" aria-hidden="true">&nbsp;</span>Editar
+                        </a>
+
+                        <a class="btn btn-danger" role="button" name="delete" data-id="{{ c.Id }}">
+                            <span class="glyphicon glyphicon-remove-circle" aria-hidden="true">&nbsp;</span>Excluir
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+     <a href="{% url 'dog_create' %}" id="id_add_dog"class="btn btn-success" role="button">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true">&nbsp;</span>Adicionar Cão
+    </a>
+
+</div>
+
+
+
+    
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+    bootbox.setDefaults({
+        locale: "br"
+    });
+
+    $('[name="delete"]').click(function(e) {
+        var botaoClicado = $(this);
+        var id = botaoClicado.attr("data-id");
+        bootbox.confirm({
+            size: "small",
+            message: "Deseja realmente excluir?",
+            callback: function(result) {
+
+                if(result){
+                    $.post("{% url 'dog_delete' %}", 
+                    {
+                        id: id,
+                        csrfmiddlewaretoken: "{{ csrf_token }}"
+                    }, 
+                    function() {
+                        location.reload();
+                    });
+                }  
+            }
+        });
+    });
+});
+</script>
+
+
+
+
+
+
+
+{% endblock %}
