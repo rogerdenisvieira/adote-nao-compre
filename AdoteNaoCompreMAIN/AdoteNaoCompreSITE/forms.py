@@ -33,7 +33,7 @@ class UserForm(ModelForm):
         fields = ["username", "first_name", "last_name", "password", "email"]
 
         labels = {
-            'username': ('Usu�rio'),
+            'username': ('Usuário'),
             'first_name':('Nome'),
             'last_name': ('Sobrenome'),
             'password': ('Senha'),
