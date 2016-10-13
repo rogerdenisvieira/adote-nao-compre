@@ -10,7 +10,7 @@ def create(request):
         form = UserForm()
         print('This is a POST to create an user.')
         return render(request, 'user/create.html', {'UserForm': form})
-    # se for GET, devolve a pagina de cria�ao do usuario
+    # se for GET, devolve a pagina de criação do usuario
     else:
         print('Retrieving user creation forms')
         form = UserForm()

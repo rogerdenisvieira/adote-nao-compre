@@ -45,6 +45,9 @@
     <Compile Include="AdoteNaoCompreSITE\controllers\user_controller.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="AdoteNaoCompreSITE\controllers\wish_controller.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="AdoteNaoCompreSITE\controllers\__init__.py">
       <SubType>Code</SubType>
     </Compile>
@@ -56,6 +59,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="AdoteNaoCompreSITE\models\post.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AdoteNaoCompreSITE\models\wish.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="AdoteNaoCompreSITE\models\__init__.py">
@@ -119,6 +125,7 @@
     <Content Include="AdoteNaoCompreSITE\templates\restricted.html" />
     <Content Include="AdoteNaoCompreSITE\templates\search.html" />
     <Content Include="AdoteNaoCompreSITE\templates\user\create.html" />
+    <Content Include="AdoteNaoCompreSITE\templates\login.html" />
     <Content Include="AdoteNaoCompreSITE\templates\user\show.html" />
     <Content Include="requirements.txt" />
     <Content Include="db.sqlite3" />

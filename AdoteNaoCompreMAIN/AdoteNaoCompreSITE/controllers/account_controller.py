@@ -1,10 +1,10 @@
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
+from AdoteNaoCompreSITE.forms import LoginForm, DogForm, UserForm
 
 
 def login_user(request):
-    print('efetuando login...')
     if request.method == "POST":
         username = request.POST['username']
         password = request.POST['password']
@@ -21,6 +21,11 @@ def login_user(request):
         else:
             messages.warning(request, 'Usuario ou senha invalidos.', extra_tags='alert-warning')
             return render(request, 'home.html', {})
+    else:
+        print('evocando form...')
+    form = LoginForm
+    print('form evocado...')
+    return render(request, 'login.html', {'LoginForm': form })
 
 
 def logout_user(request):

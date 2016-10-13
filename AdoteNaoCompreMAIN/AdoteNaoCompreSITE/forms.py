@@ -10,15 +10,24 @@ class DogForm(ModelForm):
         fields = "__all__"
         exclude = ["IdProtetor","Interesse"]
 
-        error_messages = {
-            'Nome': {
-                'required': ("This writer's name is too long."),
-            }
+        labels = {
+            'DataRegistro': ('Data de Registro'),
+            'Info': ('Informações')
         }
 
-class LoginForm(forms.Form):
-    username = forms.TextInput()
-    password = forms.PasswordInput()
+
+class LoginForm(ModelForm):
+    class Meta:
+        model = User
+        fields = ['username','password']
+    
+    #username = forms.CharField()
+    #password = forms.PasswordInput
+
+    labels = {
+        'username': ('Usuário'),
+        'password': ('Senha')
+    }
 
 
 class SearchDogForm(ModelForm):

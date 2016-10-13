@@ -9,7 +9,7 @@
 
 
 {% for field in DogForm %}
-	{% if field.label != "Foto" and field.label != "Info" %}
+	{% if field.label != "Foto" and field.label != "Informações" and field.label != "Data de Registro" %}
 		<label>{{field.label}}</label>
 		<p>{{field|add_class:"form-control"}}</p>
 	{% endif %}

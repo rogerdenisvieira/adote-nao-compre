@@ -4,12 +4,15 @@ from AdoteNaoCompreSITE.forms import DogForm, SearchDogForm
 from AdoteNaoCompreSITE.controllers import home_controller, dog_controller
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from datetime import datetime
 
 
 def search(request):
-    dogs = Dog.objects.all()
-    form = SearchDogForm()
-    return render(request, 'search.html', {'caes': dogs, 'form': form})
+    key = request.POST['key']
+    dogs = Dog.objects.filter(Nome__icontains=key)
+    print('passei aqui')
+    print(key)
+    return render(request, 'search.html', {'caes': dogs})
 
 
 # se GET = retorna a pagina de criacao
@@ -27,6 +30,7 @@ def create(request):
             dog.Foto = request.FILES['Foto']
             dog.Idade = request.POST['Idade']
             dog.Sexo = request.POST['Sexo']
+            dog.DataRegistro = datetime.now()
             dog.save()
 
             print('validado')
