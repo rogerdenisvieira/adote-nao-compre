@@ -44,11 +44,7 @@
                     <p>{{c.Sexo}}</p>
                     <p>
 
-                        {% if c.Interesse == True %}
-                        <a href="#" class="btn btn-primary" disabled>Interesse</a>
-                        {% else %}
-                        <a href="#" class="btn btn-primary">Interesse</a>
-                        {% endif %}
+
                         <a href="{% url 'dog_show' id=c.Id %}" class="btn btn-default">Informações</a>
                     </p>
                 </div>

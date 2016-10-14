@@ -11,13 +11,15 @@ urlpatterns = [
     url(r'^dog/search/', dog_controller.search, name='dog_search'),
     url(r'^account/logout', account_controller.logout_user, name='logout'),
     url(r'^user/create', user_controller.create, name="user_create"),
-    url(r'^user/show', user_controller.show, name="user_show"),
+    url(r'^user/show/(?P<id>[0-9]+)', user_controller.show, name="user_show"),
+    url(r'^user/profile/', user_controller.show_profile, name="user_profile"),
     url(r'^dog/list', dog_controller.list, name="dog_list"),
     url(r'^dog/create', dog_controller.create, name="dog_create"),
-     url(r'^dog/delete', dog_controller.delete, name="dog_delete"),
+    url(r'^dog/delete', dog_controller.delete, name="dog_delete"),
     url(r'^dog/show/(?P<id>[0-9]{2})', dog_controller.show, name='dog_show'),
     url(r'^dog/edit/(?P<id>[0-9]{2})', dog_controller.edit, name='dog_edit'),
-     url(r'^wish/', wish_controller.check_wishlist),
+    url(r'^wish/check', wish_controller.check_wishlist, name='wish_check'),
+    url(r'^wish/create', wish_controller.create, name='wish_create'),
     url(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT})
 ]
 

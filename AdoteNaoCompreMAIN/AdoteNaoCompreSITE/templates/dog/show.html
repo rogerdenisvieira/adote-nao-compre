@@ -5,7 +5,7 @@
 
 <div class="col-md-3 col-sm-6 hero-feature">
     <div class="thumbnail">
-        <img src="{{ MEDIA_URL }}{{ dog.Foto.url }}" style="width: 200px; height: 200px"  alt="">
+        <img src="{{ MEDIA_URL }}/{{ dog.Foto }}" style="width: 200px; height: 200px"  alt="">
     </div>
 </div>
 
@@ -13,26 +13,25 @@
     <table class="table table-striped">
 
         <tbody>
-        {% for field in DogForm %}
+        {% for key, value in dto %}
                 <tr>
                     <td>
-                        {{ field.label }}
+                        {{ key }}
                     </td>
                     <td>
-                            {{ field.value }}
+                            {{ value }}
                     </td>
                 </tr>
             {% endfor %}
 
-            <tr>
-                <td>
-                    Protetor
-                </td>
-                <td>
-                    {{owner.first_name}} {{owner.last_name}}
-                </td>
-
-            </tr>
+                        <tr>                 
+                    <td>
+                        Protetor
+                    </td>
+                    <td>
+                            <a href="{% url 'user_show' id=owner.id %}">{{ owner.first_name }}</a>
+                    </td>
+                </tr>
 
 
         </tbody>
@@ -42,6 +41,45 @@
                             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true">&nbsp;</span>Voltar
                         </a>
 
+                        {% if dog.Interesse == True %}
+                        <a href="#" class="btn btn-primary" disabled>Interesse</a>
+                        {% else %}
+                        <a href="#" class="btn btn-primary" name="btnRegInteresse" data-id="{{ dog.Id }}">Interesse</a>
+                        {% endif %}
+
+</div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    bootbox.setDefaults({
+        locale: "br"
+    });
+
+    $('[name="btnRegInteresse"]').click(function(e) {
+        var botaoClicado = $(this);
+        var id = botaoClicado.attr("data-id");
+        bootbox.confirm({
+            size: "small",
+            message: "Registrar interesse?",
+            callback: function(result) {
+
+                if(result){
+                    $.post("{% url 'wish_create' %}", 
+                    {
+                        idCao: id,
+                        csrfmiddlewaretoken: "{{ csrf_token }}"
+                    }, 
+                    function(data) {
+                        var json = "{'message':'Teste de registro de interesse'}";
+                        alert(json);
+                        location.reload();
+                    });
+                }  
+            }
+        });
+    });
+});
+</script>
 
 
 {% endblock %}

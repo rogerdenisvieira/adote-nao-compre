@@ -63,13 +63,13 @@
 
                         {% csrf_token %} {% else %}
                         <ui>
-                        <form class="navbar-form navbar-right" action="{% url 'user_show' %}" method="get">
+                        <form class="navbar-form navbar-right" action="{% url 'user_profile' %}" method="get">
                           <div class="btn-group">
                           <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {{ user.username }}<span class="caret"></span>
                           </button>
                           <ul class="dropdown-menu">
-                            <li><a href="{% url 'user_show' %}">Perfil</a></li>
+                            <li><a href="{% url 'user_profile' %}">Perfil</a></li>
                             <li><a href="{% url 'dog_list' %}">Meus Cães</a></li>
                             <li><a href="#">Gerenciar Interesses</a></li>
                               <li><a href="#">Meus Interesses</a></li>

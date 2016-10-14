@@ -1,6 +1,7 @@
-from django.forms import ModelForm
+from django.forms import ModelForm, ModelChoiceField
 from django.contrib.auth.models import User
 from AdoteNaoCompreSITE.models.dog import Dog
+from AdoteNaoCompreSITE.models.breed import Breed
 from django import forms
 
 
@@ -9,10 +10,12 @@ class DogForm(ModelForm):
         model = Dog
         fields = "__all__"
         exclude = ["IdProtetor","Interesse"]
+        breed = ModelChoiceField(queryset= Breed.objects.all(), empty_label='')
 
         labels = {
             'DataRegistro': ('Data de Registro'),
-            'Info': ('Informações')
+            'Info': ('Informações'),
+            'IdRaca': ('Raça')
         }
 
 

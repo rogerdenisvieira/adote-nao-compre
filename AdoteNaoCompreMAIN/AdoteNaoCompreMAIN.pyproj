@@ -55,6 +55,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="AdoteNaoCompreSITE\migrations\__init__.py" />
+    <Compile Include="AdoteNaoCompreSITE\models\breed.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="AdoteNaoCompreSITE\models\dog.py">
       <SubType>Code</SubType>
     </Compile>
@@ -67,6 +70,9 @@
     <Compile Include="AdoteNaoCompreSITE\models\__init__.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="AdoteNaoCompreSITE\MyModelChoiceField.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="AdoteNaoCompreSITE\templates\dog\__init__.py">
       <SubType>Code</SubType>
     </Compile>
@@ -75,6 +81,12 @@
     </Compile>
     <Compile Include="AdoteNaoCompreSITE\tests.py" />
     <Compile Include="AdoteNaoCompreSITE\urls.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AdoteNaoCompreSITE\viewmodels\dogViewModel.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AdoteNaoCompreSITE\viewmodels\__init__.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="AdoteNaoCompreSITE\__init__.py" />
@@ -99,6 +111,7 @@
     <Folder Include="AdoteNaoCompreSITE\templates\" />
     <Folder Include="AdoteNaoCompreSITE\templates\dog\" />
     <Folder Include="AdoteNaoCompreSITE\templates\user\" />
+    <Folder Include="AdoteNaoCompreSITE\viewmodels\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="AdoteNaoCompreSITE\static\css\bootstrap.css" />
@@ -126,6 +139,7 @@
     <Content Include="AdoteNaoCompreSITE\templates\search.html" />
     <Content Include="AdoteNaoCompreSITE\templates\user\create.html" />
     <Content Include="AdoteNaoCompreSITE\templates\login.html" />
+    <Content Include="AdoteNaoCompreSITE\templates\user\profile.html" />
     <Content Include="AdoteNaoCompreSITE\templates\user\show.html" />
     <Content Include="requirements.txt" />
     <Content Include="db.sqlite3" />

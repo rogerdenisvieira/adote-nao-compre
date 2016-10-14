@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from AdoteNaoCompreSITE.models.breed import Breed
 
 
 class Dog(models.Model):
@@ -7,6 +8,7 @@ class Dog(models.Model):
 
     Id = models.AutoField(primary_key=True)
     IdProtetor = models.ForeignKey(User)
+    IdRaca = models.ForeignKey(Breed, default='1')
     Nome = models.CharField(max_length=20)
     Info = models.CharField(max_length=100)
     Foto = models.FileField(upload_to='Images/%Y/%m/%d')

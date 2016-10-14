@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from AdoteNaoCompreSITE.models.dog import Dog
+from AdoteNaoCompreSITE.models.breed import Breed
 from AdoteNaoCompreSITE.forms import DogForm, SearchDogForm
 from AdoteNaoCompreSITE.controllers import home_controller, dog_controller
 from django.contrib.auth.decorators import login_required
@@ -26,6 +27,7 @@ def create(request):
             dog = form.save(commit=False)
             dog.IdProtetor = request.user
             dog.Nome = request.POST['Nome']
+            dog.IdRaca = request.POST['IdRaca']
             dog.Info = request.POST['Info']
             dog.Foto = request.FILES['Foto']
             dog.Idade = request.POST['Idade']
@@ -74,13 +76,26 @@ def list(request):
 
 def show(request,id):
     dog = get_object_or_404(Dog, Id=id)
-    form = DogForm(instance=dog)
     owner = User.objects.get(dog=dog)
-    return render(request, 'dog/show.html', {'DogForm': form, 'dog': dog, 'owner': owner})
+    breed = Breed.objects.get(dog=dog)
+
+    dto = {
+            'Nome': dog.Nome,
+            'Idade': dog.Idade,
+            'Informação': dog.Info,
+            'Interesse' : dog.Interesse,
+            'Protetor': owner.first_name + ' ' + owner.last_name,
+            'Sexo': dog.Sexo,
+            'Data de Registro': dog.DataRegistro,
+            'Raça': breed.Info
+        }
+
+    foto_url = dog.Foto
+
+    return render(request, 'dog/show.html', {'dto': dto.items(), 'owner': owner, 'dog': dog})
 
 @login_required
 def delete(request):
-    print("passou pelo delete")
     user = request.user   
     id = request.POST["id"]
     if user.is_authenticated():

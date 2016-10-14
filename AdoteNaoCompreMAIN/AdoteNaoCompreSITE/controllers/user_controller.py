@@ -2,6 +2,7 @@ from django.shortcuts import render
 from AdoteNaoCompreSITE.forms import UserForm
 from django.contrib.auth.decorators import login_required
 from AdoteNaoCompreSITE.models.dog import Dog
+from django.contrib.auth.models import User
 
 
 def create(request):
@@ -18,8 +19,15 @@ def create(request):
 
 
 @login_required
-def show(request):
+def show_profile(request):
     user = request.user
     if user.is_authenticated():
         caes = Dog.objects.filter(IdProtetor=request.user)
-        return render(request, 'user/show.html', {'user': user, 'caes': caes})
+        dto = {
+                'Nome': user.first_name + ' ' + user.last_name
+            }
+        return render(request, 'user/profile.html', {'dto': dto.items(), 'caes': caes})
+
+def show(request, id):
+    user = User.objects.filter(id=id)
+    return render(request, 'user/show.html', {'user': user})
