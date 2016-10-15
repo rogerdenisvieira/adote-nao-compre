@@ -79,11 +79,17 @@
     <Compile Include="AdoteNaoCompreSITE\templates\user\__init__.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="AdoteNaoCompreSITE\templates\wish\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="AdoteNaoCompreSITE\tests.py" />
     <Compile Include="AdoteNaoCompreSITE\urls.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="AdoteNaoCompreSITE\viewmodels\dogViewModel.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AdoteNaoCompreSITE\viewmodels\wishViewModel.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="AdoteNaoCompreSITE\viewmodels\__init__.py">
@@ -111,6 +117,7 @@
     <Folder Include="AdoteNaoCompreSITE\templates\" />
     <Folder Include="AdoteNaoCompreSITE\templates\dog\" />
     <Folder Include="AdoteNaoCompreSITE\templates\user\" />
+    <Folder Include="AdoteNaoCompreSITE\templates\wish\" />
     <Folder Include="AdoteNaoCompreSITE\viewmodels\" />
   </ItemGroup>
   <ItemGroup>
@@ -141,6 +148,8 @@
     <Content Include="AdoteNaoCompreSITE\templates\login.html" />
     <Content Include="AdoteNaoCompreSITE\templates\user\profile.html" />
     <Content Include="AdoteNaoCompreSITE\templates\user\show.html" />
+    <Content Include="AdoteNaoCompreSITE\templates\wish\list.html" />
+    <Content Include="AdoteNaoCompreSITE\templates\wish\show.html" />
     <Content Include="requirements.txt" />
     <Content Include="db.sqlite3" />
   </ItemGroup>

@@ -1,7 +1,6 @@
 from django.conf import settings
 from django.conf.urls import url, handler404, handler403
 from django.views.static import serve
-
 from AdoteNaoCompreSITE.controllers import home_controller, account_controller, dog_controller, generic_controller, user_controller, wish_controller
 
 urlpatterns = [
@@ -20,6 +19,8 @@ urlpatterns = [
     url(r'^dog/edit/(?P<id>[0-9]{2})', dog_controller.edit, name='dog_edit'),
     url(r'^wish/check', wish_controller.check_wishlist, name='wish_check'),
     url(r'^wish/create', wish_controller.create, name='wish_create'),
+    url(r'^wish/list', wish_controller.list, name="wish_list"),
+    url(r'^wish/delte', wish_controller.delete, name="wish_delete"),
     url(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT})
 ]
 

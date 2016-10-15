@@ -3,7 +3,10 @@
 
 {% block content %}
 
-<div class="col-md-3 col-sm-6 hero-feature">
+<html>
+<body>
+
+    <div class="col-md-3 col-sm-6 hero-feature">
     <div class="thumbnail">
         <img src="{{ MEDIA_URL }}/{{ dog.Foto }}" style="width: 200px; height: 200px"  alt="">
     </div>
@@ -69,10 +72,9 @@ $(document).ready(function() {
                         idCao: id,
                         csrfmiddlewaretoken: "{{ csrf_token }}"
                     }, 
-                    function(data) {
-                        var json = "{'message':'Teste de registro de interesse'}";
-                        alert(json);
-                        location.reload();
+                    function(response) { 
+                        bootbox.alert(response.message, function(){ location.reload(); })
+                        
                     });
                 }  
             }
@@ -82,4 +84,9 @@ $(document).ready(function() {
 </script>
 
 
+
+
+
+</body>
+</html>
 {% endblock %}
