@@ -27,10 +27,10 @@ class LoginForm(ModelForm):
     #username = forms.CharField()
     #password = forms.PasswordInput
 
-    labels = {
-        'username': ('Usuário'),
-        'password': ('Senha')
-    }
+        labels = {
+            'username': ('Usuário'),
+            'password': ('Senha')
+        }
 
 
 class SearchDogForm(ModelForm):

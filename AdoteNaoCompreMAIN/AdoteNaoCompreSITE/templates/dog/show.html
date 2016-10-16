@@ -66,17 +66,26 @@ $(document).ready(function() {
             message: "Registrar interesse?",
             callback: function(result) {
 
-                if(result){
-                    $.post("{% url 'wish_create' %}", 
-                    {
-                        idCao: id,
-                        csrfmiddlewaretoken: "{{ csrf_token }}"
-                    }, 
-                    function(response) { 
-                        bootbox.alert(response.message, function(){ location.reload(); })
-                        
-                    });
-                }  
+                if (result) {
+                    $.post("{% url 'wish_create' %}", {
+                            idCao: id,
+                            csrfmiddlewaretoken: "{{ csrf_token }}"
+                        },
+                        function(response) {
+
+                            if (response.code == 2) {
+                                bootbox.alert(response.message, function() {
+                                    window.location.href = "{% url 'login' %}";
+                                })
+
+                            } else {
+                                bootbox.alert(response.message, function() {
+                                    location.reload();
+                                })
+                            }
+
+                        });
+                }
             }
         });
     });

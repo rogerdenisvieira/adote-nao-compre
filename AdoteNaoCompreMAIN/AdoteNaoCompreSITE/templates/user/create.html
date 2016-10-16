@@ -10,6 +10,8 @@
 
 {% for field in UserForm %}
 	{% if field.label != "Foto" and field.label != "Info" %}
+        
+            {{ field.errors}}
 		<label>
 			{{field.label}}
 		</label>

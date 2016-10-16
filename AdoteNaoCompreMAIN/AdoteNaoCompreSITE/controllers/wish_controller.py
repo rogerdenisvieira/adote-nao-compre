@@ -9,16 +9,7 @@ from AdoteNaoCompreSITE.models.wish import Wish
 from django.contrib.auth.models import User
 from datetime import datetime
 
-def check_wishlist(request):
-    data = serializers.serialize("json", Dog.objects.all())
 
-    to_json = {
-        "key1": "value1",
-        "key2": "value2"
-    }
-    return JsonResponse(data, safe=False)
-
-@login_required()
 def create(request):
     message = None
     code = 0
@@ -29,7 +20,8 @@ def create(request):
     protetor = User.objects.get(dog=cao)
     interessado = request.user
 
-    if user.is_authenticated():
+    # se usuário atual está autenticado
+    if interessado.is_authenticated():
 
         #verifica se o interessado e o protetor são a mesma pessoa
         if(protetor.id == interessado.id):
@@ -56,10 +48,13 @@ def create(request):
             #populando resposta
             message = 'Interesse registrado com sucesso.'
             code = 1
+    
+    #se não estiver autenticado
     else:
         message = 'Você deverá realizar o login para registrar interesse'
         code = 2
 
+    #monta JSON de resposta
     to_json = {
         "message": message,
         "code": code
@@ -72,13 +67,13 @@ def list(request):
     interesses = Wish.objects.filter(IdInteressado = usuario.id)
     listaLinhas = []
    
+    #para cada interesse do usuário
     for i in interesses:
         cao = Dog.objects.get(Id=i.IdCao.Id)
         protetor = User.objects.get(id=i.IdProtetor.id)
         interessado = User.objects.get(id=i.IdInteressado.id)
 
-        print(cao.Nome)
-
+        #montando DTO para exibição no template
         listaColunas = []
         listaColunas.append(cao.Nome)
         listaColunas.append(cao.Id)
@@ -89,9 +84,6 @@ def list(request):
         listaColunas.append(i.DataRegistro)
 
         listaLinhas.append(listaColunas)
-        
-        print(len(listaColunas))
-        print(len(listaLinhas))
 
     return render(request, 'wish/list.html', {'listaLinhas': listaLinhas})
 
