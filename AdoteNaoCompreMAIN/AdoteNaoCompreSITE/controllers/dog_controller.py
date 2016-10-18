@@ -10,7 +10,7 @@ from datetime import datetime
 
 def search(request):
     key = request.POST['key']
-    dogs = Dog.objects.filter(Nome__icontains=key)
+    dogs = Dog.objects.filter(Nome__icontains=key) | Dog.objects.filter(Info__icontains=key)
     print('passei aqui')
     print(key)
     return render(request, 'search.html', {'caes': dogs})
@@ -84,7 +84,6 @@ def show(request,id):
             'Idade': dog.Idade,
             'Informação': dog.Info,
             'Interesse' : dog.Interesse,
-            'Protetor': owner.first_name + ' ' + owner.last_name,
             'Sexo': dog.Sexo,
             'Data de Registro': dog.DataRegistro,
             'Raça': breed.Info

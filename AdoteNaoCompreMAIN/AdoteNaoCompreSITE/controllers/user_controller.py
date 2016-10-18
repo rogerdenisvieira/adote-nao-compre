@@ -12,14 +12,13 @@ def create(request):
         form = UserForm(request.POST)
 
         if form.is_valid():
-            print('persistindo usuário')
-            user = form.save(commit=False)
-            user.username = request.POST['username']
-            user.first_name = request.POST['first_name']
-            user.last_name = request.POST['last_name']
-            user.password = request.POST['password']
-            user.email = request.POST['email']
-            user.save()
+            User.objects.create_user(
+                    username=request.POST['username'],
+                    first_name=request.POST['first_name'],
+                    last_name=request.POST['last_name'],
+                    password=request.POST['password'],
+                    email=request.POST['email']
+                )
 
             messages.success(request, 'Usuário criado com sucesso.', extra_tags='alert-success')
             return render(request, 'home.html', {})

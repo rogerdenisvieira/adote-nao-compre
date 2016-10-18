@@ -14,6 +14,18 @@
 	 
 
 <h1> Hot Dogs </h1>
+{% for c in caes %}
+
+            <div class="col-lg-4 col-sm-6 text-center">
+                <img class="img-circle img-responsive img-center" style="width: 200px; height: 200px" src="{{ MEDIA_URL }}{{ c.Foto.url }}" alt="">
+                <h3>{{ c.Nome }}
+                    <small></small>
+                </h3>
+                <p>{{ c.Info }}</p>
+            </div>
+
+{% endfor %}
+
 
 
 

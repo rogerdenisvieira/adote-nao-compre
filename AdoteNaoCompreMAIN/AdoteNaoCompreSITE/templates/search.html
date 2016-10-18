@@ -3,33 +3,6 @@
 {% block content %}
 
 {% load static %}
-    <div class="row">
-        <form action="/Search/Search" method="get">
-
-            <div class="col-md-2 col-sm-2">
-                <select class="form-control">
-                    <option>Fêmea</option>
-                    <option>Macho</option>
-                </select>
-            </div>
-
-            <div class="col-md-2 col-sm-2">
-                <select class="form-control">
-                    <option>Cão</option>
-                    <option>Gato</option>
-                    <option>Outro</option>
-                </select>
-            </div>
-
-            <div class="col-md-2 col-sm-2">
-
-                <button type="submit" class="btn btn-primary" id="btnsearch">
-                    <span class="glyphicon glyphicon-search" aria-hidden="true">&nbsp;</span>Pesquisar
-                </button>
-            </div>
-        </form>
-    </div>
-
 
 
 <div class="hero-spacer">
@@ -41,8 +14,7 @@
             
                 <div class="caption">
                     <h3>{{c.Nome}}</h3>
-                    <p>{{c.Sexo}}</p>
-                    <p>
+                     <p>
 
 
                         <a href="{% url 'dog_show' id=c.Id %}" class="btn btn-default">Informações</a>

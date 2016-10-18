@@ -14,6 +14,9 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static 'css/heroic_features.css' %}">
+      <link rel="stylesheet" href="{% static 'css/round-about.css' %}">  
+      <link rel="stylesheet" href="{% static 'css/circle_btn.css' %}">
+
 
     <script src="{% static 'js/jquery.js' %}"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
@@ -69,6 +72,14 @@
                           <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {{ user.username }}<span class="caret"></span>
                           </button>
+
+                        <!--
+                           <a href="#" data-toggle="dropdown">
+                              <img src="http://i.stack.imgur.com/e2S63.png" style="width: 35px; height: 35px" />
+                           </a>
+                        -->
+
+
                           <ul class="dropdown-menu">
                             <li><a href="{% url 'user_profile' %}">Perfil</a></li>
                             <li><a href="{% url 'dog_list' %}">Meus Cães</a></li>

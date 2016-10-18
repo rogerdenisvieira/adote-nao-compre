@@ -123,6 +123,7 @@
   <ItemGroup>
     <Content Include="AdoteNaoCompreSITE\static\css\bootstrap.css" />
     <Content Include="AdoteNaoCompreSITE\static\css\bootstrap.min.css" />
+    <Content Include="AdoteNaoCompreSITE\static\css\circle_btn.css" />
     <Content Include="AdoteNaoCompreSITE\static\css\heroic_features.css" />
     <Content Include="AdoteNaoCompreSITE\static\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="AdoteNaoCompreSITE\static\fonts\glyphicons-halflings-regular.svg" />
