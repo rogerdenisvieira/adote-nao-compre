@@ -70,9 +70,6 @@
     <Compile Include="AdoteNaoCompreSITE\models\__init__.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="AdoteNaoCompreSITE\MyModelChoiceField.py">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="AdoteNaoCompreSITE\templates\dog\__init__.py">
       <SubType>Code</SubType>
     </Compile>
@@ -142,7 +139,6 @@
     <Content Include="AdoteNaoCompreSITE\templates\dog\show.html" />
     <Content Include="AdoteNaoCompreSITE\templates\header.html" />
     <Content Include="AdoteNaoCompreSITE\templates\home.html" />
-    <Content Include="AdoteNaoCompreSITE\templates\index.html" />
     <Content Include="AdoteNaoCompreSITE\templates\restricted.html" />
     <Content Include="AdoteNaoCompreSITE\templates\search.html" />
     <Content Include="AdoteNaoCompreSITE\templates\user\create.html" />
