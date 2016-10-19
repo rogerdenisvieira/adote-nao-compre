@@ -27,7 +27,7 @@ def create(request):
             dog = form.save(commit=False)
             dog.IdProtetor = request.user
             dog.Nome = request.POST['Nome']
-            dog.IdRaca = request.POST['IdRaca']
+            dog.IdRaca.Id = request.POST['IdRaca']
             dog.Info = request.POST['Info']
             dog.Foto = request.FILES['Foto']
             dog.Idade = request.POST['Idade']

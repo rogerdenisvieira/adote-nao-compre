@@ -9,12 +9,11 @@ class DogForm(ModelForm):
     class Meta:
         model = Dog
         fields = "__all__"
-        exclude = ["IdProtetor","Interesse"]
+        exclude = ["IdProtetor","Interesse","DataRegistro"]
         breed = ModelChoiceField(queryset= Breed.objects.all(), empty_label='')
 
         labels = {
-            'DataRegistro': ('Data de Registro'),
-            'Info': ('Informações'),
+             'Info': ('Informações'),
             'IdRaca': ('Raça')
         }
 
