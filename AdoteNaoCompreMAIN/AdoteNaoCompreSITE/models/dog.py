@@ -15,4 +15,4 @@ class Dog(models.Model):
     Interesse = models.BooleanField(default=False)
     Idade = models.IntegerField(blank=True, null=True)
     Sexo = models.CharField(max_length=2, choices=SEX_CHOICES, default='M',blank=False)
-    DataRegistro = models.DateTimeField(blank=False, null=True)
+    DataRegistro = models.DateTimeField(null=True)
