@@ -5,7 +5,7 @@
 
 <h1>Autenticação</h1>
 
-<form method="post" action="{% url 'login' %}">
+<form class="form-inline" method="post" action="{% url 'login' %}">
 {% csrf_token %}
 
     {% for field in LoginForm  %}

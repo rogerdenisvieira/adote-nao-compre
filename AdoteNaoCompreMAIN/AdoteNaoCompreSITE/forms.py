@@ -19,7 +19,7 @@ class DogForm(ModelForm):
 
 
 class LoginForm(ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput)
+    password = forms.CharField(widget=forms.PasswordInput, label="Senha")
 
     class Meta:
         model = User
@@ -27,7 +27,6 @@ class LoginForm(ModelForm):
     
         labels = {
             'username': ('Usuário'),
-            'password': ('Senha')
         }
 
 
@@ -38,19 +37,16 @@ class SearchDogForm(ModelForm):
 
 
 class UserForm(ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput)
-    confirm_password = forms.CharField(widget=forms.PasswordInput)
-    
+    password = forms.CharField(widget=forms.PasswordInput, label="Senha")
+    confirm_password = forms.CharField(widget=forms.PasswordInput, label="Confirmar senha")
+
     class Meta:
         model = User
-        fields = ["username", "first_name", "last_name", "password","confirm_password", "email"]
-
+        fields = ["username", "first_name", "last_name", "email"]
 
         labels = {
             'username': ('Usuário'),
             'first_name':('Nome'),
             'last_name': ('Sobrenome'),
-            'password': ('Senha'),
-            'confirm_password':('Confirmar Senha'),
-            'email': ('Email')
+            'email': ('E-mail'),
         }
