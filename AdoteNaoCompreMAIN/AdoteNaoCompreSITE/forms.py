@@ -20,13 +20,12 @@ class DogForm(ModelForm):
 
 
 class LoginForm(ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput)
+
     class Meta:
         model = User
         fields = ['username','password']
     
-    #username = forms.CharField()
-    #password = forms.PasswordInput
-
         labels = {
             'username': ('Usuário'),
             'password': ('Senha')
