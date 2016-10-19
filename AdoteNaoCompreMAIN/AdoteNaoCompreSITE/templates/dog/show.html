@@ -22,12 +22,12 @@
                         {{ key }}
                     </td>
                     <td>
-                            {{ value }}
+                        {{ value }}
                     </td>
                 </tr>
             {% endfor %}
 
-                        <tr>                 
+                <tr>                 
                     <td>
                         Protetor
                     </td>
@@ -35,8 +35,6 @@
                             <a href="{% url 'user_show' id=owner.id %}">{{ owner.first_name }}</a>
                     </td>
                 </tr>
-
-
         </tbody>
     </table>
 
