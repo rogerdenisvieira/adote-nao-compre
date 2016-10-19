@@ -14,5 +14,6 @@ class Dog(models.Model):
     Foto = models.FileField(upload_to='Images/%Y/%m/%d',blank=False)
     Interesse = models.BooleanField(default=False)
     Idade = models.IntegerField(blank=True, null=True)
+    Peso = models.FloatField(blank=False, null=True)
     Sexo = models.CharField(max_length=2, choices=SEX_CHOICES, default='M',blank=False)
     DataRegistro = models.DateTimeField(null=True)

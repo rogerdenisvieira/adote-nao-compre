@@ -18,6 +18,9 @@
 		<p>
 			{{field|add_class:"form-control"}}
 		</p>
+
+
+
 	{% endif %}
 {% endfor %}
 
@@ -28,5 +31,21 @@
                             <span class="glyphicon glyphicon-remove-circle" aria-hidden="true">&nbsp;</span>Cancelar
                         </a>
 </form>
+<script>
+    var password = document.getElementById("id_password")
+  , confirm_password = document.getElementById("id_confirm_password");
+
+    function validatePassword() {
+        if (password.value != confirm_password.value) {
+            confirm_password.setCustomValidity("As senhas são diferentes.");
+        } else {
+            confirm_password.setCustomValidity('');
+        }
+    }
+
+    password.onchange = validatePassword;
+    confirm_password.onkeyup = validatePassword;
+
+</script>
 
 {% endblock %}

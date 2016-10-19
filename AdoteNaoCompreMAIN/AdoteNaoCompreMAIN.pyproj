@@ -55,6 +55,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="AdoteNaoCompreSITE\migrations\__init__.py" />
+    <Compile Include="AdoteNaoCompreSITE\models\advertisement.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="AdoteNaoCompreSITE\models\breed.py">
       <SubType>Code</SubType>
     </Compile>

@@ -38,14 +38,19 @@ class SearchDogForm(ModelForm):
 
 
 class UserForm(ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput)
+    confirm_password = forms.CharField(widget=forms.PasswordInput)
+    
     class Meta:
         model = User
-        fields = ["username", "first_name", "last_name", "password", "email"]
+        fields = ["username", "first_name", "last_name", "password","confirm_password", "email"]
+
 
         labels = {
             'username': ('Usuário'),
             'first_name':('Nome'),
             'last_name': ('Sobrenome'),
             'password': ('Senha'),
+            'confirm_password':('Confirmar Senha'),
             'email': ('Email')
         }
