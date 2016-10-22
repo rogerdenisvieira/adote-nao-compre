@@ -1,0 +1,99 @@
+﻿{% extends "header.html" %}
+{% load widget_tweaks %}
+{% load static %}
+{% block content %}
+
+<html>
+<body>
+
+    <div class="col-md-3 col-sm-6 hero-feature">
+    <div class="thumbnail">
+        <img src="{{ MEDIA_URL }}{{ dog.Foto.url }}" style="width: 200px; height: 200px"  alt="">
+    </div>
+</div>
+
+<div class="container">
+    <table class="table table-striped">
+
+        <tbody>
+        {% for key, value in dto %}
+                <tr>
+                    <td>
+                        {{ key }}
+                    </td>
+                    <td>
+                        {{ value }}
+                    </td>
+                </tr>
+            {% endfor %}
+
+                <tr>                 
+                    <td>
+                        Protetor
+                    </td>
+                    <td>
+                            <a href="{% url 'user_show' id=owner.id %}">{{ owner.first_name }}</a>
+                    </td>
+                </tr>
+        </tbody>
+    </table>
+
+                        <a href="javascript:history.go(-1)" class="btn btn-success" role="button">
+                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true">&nbsp;</span>Voltar
+                        </a>
+
+                        {% if dog.Interesse == True %}
+                        <a href="#" class="btn btn-primary" disabled>Interesse</a>
+                        {% else %}
+                        <a href="#" class="btn btn-primary" name="btnRegInteresse" data-id="{{ dog.Id }}">Interesse</a>
+                        {% endif %}
+
+</div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    bootbox.setDefaults({
+        locale: "br"
+    });
+
+    $('[name="btnRegInteresse"]').click(function(e) {
+        var botaoClicado = $(this);
+        var id = botaoClicado.attr("data-id");
+        bootbox.confirm({
+            size: "small",
+            message: "Registrar interesse?",
+            callback: function(result) {
+
+                if (result) {
+                    $.post("{% url 'wish_create' %}", {
+                            idCao: id,
+                            csrfmiddlewaretoken: "{{ csrf_token }}"
+                        },
+                        function(response) {
+
+                            if (response.code == 2) {
+                                bootbox.alert(response.message, function() {
+                                    window.location.href = "{% url 'login' %}";
+                                })
+
+                            } else {
+                                bootbox.alert(response.message, function() {
+                                    location.reload();
+                                })
+                            }
+
+                        });
+                }
+            }
+        });
+    });
+});
+</script>
+
+
+
+
+
+</body>
+</html>
+{% endblock %}
