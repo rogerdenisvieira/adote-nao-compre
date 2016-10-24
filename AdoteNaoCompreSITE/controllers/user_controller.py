@@ -2,6 +2,7 @@ from django.shortcuts import render
 from AdoteNaoCompreSITE.forms import UserForm
 from django.contrib.auth.decorators import login_required
 from AdoteNaoCompreSITE.models.dog import Dog
+from AdoteNaoCompreSITE.models.user_extras import User_extras
 from django.contrib.auth.models import User
 from django.contrib import messages
 
@@ -19,6 +20,12 @@ def create(request):
                     password=request.POST['password'],
                     email=request.POST['email']
                 )
+
+            user = User.objects.get(username=request.POST['username'])
+
+            User_extras.objects.create(
+                IdPai=user
+            )
 
             messages.success(request, 'Usuário criado com sucesso.', extra_tags='alert-success')
             return render(request, 'home.html', {})

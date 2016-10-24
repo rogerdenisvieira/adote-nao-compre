@@ -128,3 +128,6 @@ MEDIA_URL = '/media/'
 
 LOGIN_URL = '/account/login'
 
+TENTATIVAS_LOGIN = 5
+
+

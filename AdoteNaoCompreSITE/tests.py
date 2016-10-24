@@ -15,31 +15,15 @@ class AdoteNaoCompre_Testes(unittest.TestCase):
         self.verificationErrors = []
         self.accept_next_alert = True
     
-    def test_01_incluir_cao(self):
+    def test_01_login_errado(self):
         driver = self.driver
         driver.get(self.base_url)
-        driver.find_element_by_name("username").clear()
-        driver.find_element_by_name("username").send_keys("admin")
-        driver.find_element_by_name("password").clear()
-        driver.find_element_by_name("password").send_keys("Ahyra0003")
-        driver.find_element_by_css_selector("button.btn.btn-primary").click()
-        driver.find_element_by_xpath("(//button[@type='button'])[2]").click()
-        driver.find_element_by_link_text(u"Gerenciar Cães").click()
-        driver.find_element_by_id("id_add_dog").click()
-        driver.find_element_by_id("id_Nome").clear()
-        driver.find_element_by_id("id_Nome").send_keys("Tereso")
-        driver.find_element_by_id("id_Idade").clear()
-        driver.find_element_by_id("id_Idade").send_keys("1")
-        driver.find_element_by_name("Foto").clear()
-        driver.find_element_by_name("Foto").send_keys("C:\\Users\\roger\\Desktop\\Recursos\\photo_dica2.png")
-        driver.find_element_by_name("Info").clear()
-        driver.find_element_by_name("Info").send_keys("Um bom cachorro.")
-        driver.find_element_by_css_selector("button.btn.btn-primary").click()
-        driver.find_element_by_xpath("(//button[@type='button'])[2]").click()
-        driver.find_element_by_link_text("Sair").click()
-
-        driver.find_element_by_link_text(u"Pesquisa").click()
-        driver.save_screenshot("D:\\filename.png")
+        driver.find_element_by_xpath("//div[@id='bs-example-navbar-collapse-1']/ul/ui/a/span").click()
+        driver.find_element_by_id("id_username").clear()
+        driver.find_element_by_id("id_username").send_keys("usuario7")
+        driver.find_element_by_id("id_password").clear()
+        driver.find_element_by_id("id_password").send_keys("jhsdjkfhjsdkf")
+        driver.find_element_by_css_selector("button[name=\"btnLogin\"]").click()
 
     def test_01_remover_cao(self):
         print("passou pelo teste de remoção")

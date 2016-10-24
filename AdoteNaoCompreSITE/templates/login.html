@@ -5,6 +5,15 @@
 
 <h1>Autenticação</h1>
 
+	{% if messages %}
+	    {% for message in messages %}
+	        <div class="alert {{message.extra_tags}}">
+	            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+	            <strong> {{ message }}</strong>
+	        </div>
+	    {% endfor %}
+	{% endif %}
+
 <form class="form-inline" method="post" action="{% url 'login' %}">
 {% csrf_token %}
 
