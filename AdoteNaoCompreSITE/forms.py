@@ -2,6 +2,7 @@ from django.forms import ModelForm, ModelChoiceField
 from django.contrib.auth.models import User
 from AdoteNaoCompreSITE.models.dog import Dog
 from AdoteNaoCompreSITE.models.breed import Breed
+from AdoteNaoCompreSITE.models.user_extras import User_extras
 from django import forms
 
 
@@ -50,3 +51,8 @@ class UserForm(ModelForm):
             'last_name': ('Sobrenome'),
             'email': ('E-mail'),
         }
+
+class ExtraInfoForm(ModelForm):
+        class Meta:
+            model = User_extras
+            exclude = ['Tentativas']

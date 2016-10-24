@@ -74,6 +74,7 @@ def list(request):
         caes = Dog.objects.filter(IdProtetor=request.user)
         return render(request, 'dog/list.html', {'user': user, 'caes': caes})
 
+
 def show(request,id):
     dog = get_object_or_404(Dog, Id=id)
     owner = User.objects.get(dog=dog)
@@ -92,6 +93,7 @@ def show(request,id):
     foto_url = dog.Foto
 
     return render(request, 'dog/show.html', {'dto': dto.items(), 'owner': owner, 'dog': dog})
+
 
 @login_required
 def delete(request):

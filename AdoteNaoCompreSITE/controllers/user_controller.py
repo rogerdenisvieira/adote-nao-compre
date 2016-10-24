@@ -1,8 +1,9 @@
-from django.shortcuts import render
-from AdoteNaoCompreSITE.forms import UserForm
+from django.shortcuts import render, redirect
+from AdoteNaoCompreSITE.forms import UserForm, ExtraInfoForm
 from django.contrib.auth.decorators import login_required
 from AdoteNaoCompreSITE.models.dog import Dog
 from AdoteNaoCompreSITE.models.user_extras import User_extras
+from AdoteNaoCompreSITE.controllers import user_controller
 from django.contrib.auth.models import User
 from django.contrib import messages
 
@@ -48,6 +49,28 @@ def show_profile(request):
                 'Nome': user.first_name + ' ' + user.last_name
             }
         return render(request, 'user/profile.html', {'dto': dto.items(), 'caes': caes})
+
+@login_required
+def edit_extras(request):
+    user = request.user
+    extra = User_extras.objects.get(IdPai=user)
+
+    if request.method == "POST":
+        form = ExtraInfoForm(request.POST, instance=extra)
+
+        if form.is_valid():
+            extra = form.save(commit=False)
+            extra.Telefone = request.POST['Telefone']
+            extra.Celular = request.POST['Celular']
+            extra.Estado = request.POST['Estado']
+            extra.Cidade = request.POST['Cidade']
+            extra.CEP = request.POST['CEP']
+            extra.save()
+            return redirect(user_controller.show_profile)
+    else:
+        form = ExtraInfoForm(instance=extra)
+        return render(request, 'user/extra_info.html', {'form': form})
+
 
 def show(request, id):
     user = User.objects.filter(id=id)

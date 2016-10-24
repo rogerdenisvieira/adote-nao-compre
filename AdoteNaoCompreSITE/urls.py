@@ -12,6 +12,7 @@ urlpatterns = [
     url(r'^user/create', user_controller.create, name="user_create"),
     url(r'^user/show/(?P<id>[0-9]+)', user_controller.show, name="user_show"),
     url(r'^user/profile/', user_controller.show_profile, name="user_profile"),
+    url(r'^user/extras/', user_controller.edit_extras, name="extras"),
     url(r'^dog/list', dog_controller.list, name="dog_list"),
     url(r'^dog/create', dog_controller.create, name="dog_create"),
     url(r'^dog/delete', dog_controller.delete, name="dog_delete"),
