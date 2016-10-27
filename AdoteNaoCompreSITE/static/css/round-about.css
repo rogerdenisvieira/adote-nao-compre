@@ -10,6 +10,7 @@ body {
 
 .img-center {
 	margin: 0 auto;
+	    border:1px solid gray;
 }
 
 footer {

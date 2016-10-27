@@ -1,6 +1,6 @@
 ﻿{% extends "header.html" %}
 {% load widget_tweaks %}
-
+{% load static %}
 {% block content %}
 
 
@@ -16,14 +16,10 @@
 
 <label>Foto</label>
 
-<p><div class="input-group">
-                <label class="input-group-btn">
-                    <span class="btn btn-default">
-                        Selecionar... <input type="file" style="display: none;" name="Foto" required="">
-                    </span>
-                </label>
-                <input type="text" class="form-control" readonly="" required="">
-            </div></p>
+<label>Foto</label>
+<p>
+                <input type="file" class="filestyle" data-icon="false" data-buttonBefore="true" name="Foto" required>
+            </p>
 
 <p>Atual: <a href="{{ MEDIA_URL }}{{ dog.Foto.url }}" class="img-rounded"  alt="">{{ dog.Foto }}</a></p>
 
@@ -40,5 +36,8 @@
                         </a>
 
 </form>
+
+<script src="{% static 'js/jquery.js' %}"></script>
+  <script src="{% static 'js/bootstrap-filestyle.min.js' %}"></script>
 
 {% endblock %}
