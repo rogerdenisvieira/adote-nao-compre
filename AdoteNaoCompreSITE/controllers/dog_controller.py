@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from AdoteNaoCompreSITE.models.dog import Dog
 from AdoteNaoCompreSITE.models.breed import Breed
-from AdoteNaoCompreSITE.forms import DogForm, SearchDogForm
+from AdoteNaoCompreSITE.forms import DogForm
 from AdoteNaoCompreSITE.controllers import home_controller, dog_controller
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User

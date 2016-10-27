@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from AdoteNaoCompreSITE.models.dog import Dog
 from AdoteNaoCompreSITE.models.breed import Breed
 from AdoteNaoCompreSITE.models.user_extras import User_extras
+from AdoteNaoCompreSITE.models.state import State
 from django import forms
 
 
@@ -15,7 +16,7 @@ class DogForm(ModelForm):
 
         labels = {
              'Info': ('Informações'),
-            'IdRaca': ('Raça')
+             'IdRaca': ('Raça')
         }
 
 
@@ -29,12 +30,6 @@ class LoginForm(ModelForm):
         labels = {
             'username': ('Usuário'),
         }
-
-
-class SearchDogForm(ModelForm):
-    class Meta:
-        model = Dog
-        fields = ["Sexo", "Idade"]
 
 
 class UserForm(ModelForm):
@@ -52,7 +47,10 @@ class UserForm(ModelForm):
             'email': ('E-mail'),
         }
 
+
 class ExtraInfoForm(ModelForm):
         class Meta:
             model = User_extras
-            exclude = ['Tentativas']
+            exclude = ['Tentativas','IdPai']
+
+            state = ModelChoiceField(queryset=State.objects.all(), empty_label='')

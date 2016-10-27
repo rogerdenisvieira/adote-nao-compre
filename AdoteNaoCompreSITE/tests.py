@@ -15,18 +15,40 @@ class AdoteNaoCompre_Testes(unittest.TestCase):
         self.verificationErrors = []
         self.accept_next_alert = True
     
-    def test_01_login_errado(self):
+    def test_01_login(self):
         driver = self.driver
         driver.get(self.base_url)
         driver.find_element_by_xpath("//div[@id='bs-example-navbar-collapse-1']/ul/ui/a/span").click()
         driver.find_element_by_id("id_username").clear()
         driver.find_element_by_id("id_username").send_keys("usuario7")
         driver.find_element_by_id("id_password").clear()
-        driver.find_element_by_id("id_password").send_keys("jhsdjkfhjsdkf")
+        driver.find_element_by_id("id_password").send_keys("senha123")
         driver.find_element_by_css_selector("button[name=\"btnLogin\"]").click()
 
-    def test_01_remover_cao(self):
-        print("passou pelo teste de remoção")
+    def test_02_edit_extra_info(self):
+        driver = self.driver
+        driver.get(self.base_url)
+        driver.find_element_by_xpath("//div[@id='bs-example-navbar-collapse-1']/ul/ui/a/span").click()
+        driver.find_element_by_id("id_username").clear()
+        driver.find_element_by_id("id_username").send_keys("usuario7")
+        driver.find_element_by_id("id_password").clear()
+        driver.find_element_by_id("id_password").send_keys("senha123")
+        driver.find_element_by_css_selector("button[name=\"btnLogin\"]").click()
+        driver.find_element_by_xpath("(//button[@type='button'])[2]").click()
+        driver.find_element_by_link_text("Perfil").click()
+        driver.find_element_by_id("link_edit_extra").click()
+        driver.find_element_by_id("btn_save").click()
+
+    def test_03_search_dog(self):
+        driver = self.driver
+        driver.get(self.base_url)
+        driver.find_element_by_name("key").clear()
+        driver.find_element_by_name("key").send_keys("En")
+        driver.find_element_by_id("btnsearch").click()
+        driver.find_element_by_xpath(u"(//a[contains(text(),'Informações')])[3]").click()
+        driver.find_element_by_link_text(u"Adote, não compre!").click()
+
+
 
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)

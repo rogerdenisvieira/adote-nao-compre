@@ -45,10 +45,19 @@ def show_profile(request):
     user = request.user
     if user.is_authenticated():
         caes = Dog.objects.filter(IdProtetor=request.user)
+        extra = User_extras.objects.get(IdPai=user)
+
         dto = {
-                'Nome': user.first_name + ' ' + user.last_name
+                'Nome': user.first_name + ' ' + user.last_name,
+                'E-mail': user.email,
+                'Cidade': extra.Cidade,
+                'Estado': extra.IdEstado,
+                'CEP': extra.CEP,
+                'Telefone': extra.Telefone,
+                'Celular' : extra.Celular
             }
         return render(request, 'user/profile.html', {'dto': dto.items(), 'caes': caes})
+
 
 @login_required
 def edit_extras(request):
@@ -62,7 +71,7 @@ def edit_extras(request):
             extra = form.save(commit=False)
             extra.Telefone = request.POST['Telefone']
             extra.Celular = request.POST['Celular']
-            extra.Estado = request.POST['Estado']
+            extra.Estado = request.POST['IdEstado']
             extra.Cidade = request.POST['Cidade']
             extra.CEP = request.POST['CEP']
             extra.save()
@@ -73,5 +82,5 @@ def edit_extras(request):
 
 
 def show(request, id):
-    user = User.objects.filter(id=id)
+    user = User.objects.get(id=id)
     return render(request, 'user/show.html', {'user': user})
