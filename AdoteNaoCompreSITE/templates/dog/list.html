@@ -12,45 +12,41 @@
 <div class="container">
     <table class="table table-striped">
         <thead>
-            <tr>
-                <th>Cão</th>
-                <th>Ação</th>
-            </tr>
+        <tr>
+            <th>Cão</th>
+            <th>Ação</th>
+        </tr>
         </thead>
 
         <tbody>
-            {% for c in caes %}
-                <tr>
-                    <td>
-                        {{c.Nome}}
-                    </td>
-                    <td>
-                        <a href="{% url 'dog_show' id=c.Id %}" class="btn btn-info" role="button">
-                            <span class="glyphicon glyphicon-info-sign" aria-hidden="true">&nbsp;</span>Detalhes
-                        </a>
+        {% for c in caes %}
+        <tr>
+            <td>
+                {{c.Nome}}
+            </td>
+            <td>
+                <a href="{% url 'dog_show' id=c.Id %}" class="btn btn-info" role="button">
+                    <span class="glyphicon glyphicon-info-sign" aria-hidden="true">&nbsp;</span>Detalhes
+                </a>
 
-                        <a href="{% url 'dog_edit' id=c.Id %}" class="btn btn-info" role="button">
-                            <span class="glyphicon glyphicon-pencil" aria-hidden="true">&nbsp;</span>Editar
-                        </a>
+                <a href="{% url 'dog_edit' id=c.Id %}" class="btn btn-info" role="button">
+                    <span class="glyphicon glyphicon-pencil" aria-hidden="true">&nbsp;</span>Editar
+                </a>
 
-                        <a class="btn btn-danger" role="button" name="delete" data-id="{{ c.Id }}">
-                            <span class="glyphicon glyphicon-remove-circle" aria-hidden="true">&nbsp;</span>Excluir
-                        </a>
-                    </td>
-                </tr>
-            {% endfor %}
+                <a class="btn btn-danger" role="button" name="delete" data-id="{{ c.Id }}">
+                    <span class="glyphicon glyphicon-remove-circle" aria-hidden="true">&nbsp;</span>Excluir
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
         </tbody>
     </table>
 
-     <a href="{% url 'dog_create' %}" id="id_add_dog"class="btn btn-success" role="button">
+    <a href="{% url 'dog_create' %}" id="id_add_dog" class="btn btn-success" role="button">
         <span class="glyphicon glyphicon-plus" aria-hidden="true">&nbsp;</span>Adicionar Cão
     </a>
 
 </div>
-
-
-
-    
 
 
 <script type="text/javascript">
@@ -81,12 +77,9 @@ $(document).ready(function() {
         });
     });
 });
+
+
 </script>
-
-
-
-
-
 
 
 {% endblock %}

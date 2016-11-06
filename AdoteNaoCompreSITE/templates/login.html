@@ -5,32 +5,31 @@
 
 <h1>Autenticação</h1>
 
-	{% if messages %}
-	    {% for message in messages %}
-	        <div class="alert {{message.extra_tags}}">
-	            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-	            <strong> {{ message }}</strong>
-	        </div>
-	    {% endfor %}
-	{% endif %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert {{message.extra_tags}}">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong> {{ message }}</strong>
+</div>
+{% endfor %}
+{% endif %}
 
 <form class="form-inline" method="post" action="{% url 'login' %}">
-{% csrf_token %}
+    {% csrf_token %}
 
-    {% for field in LoginForm  %}
-		<label>{{field.label}}</label>
-		<p>{{field|add_class:"form-control"}}</p>
-{% endfor %}
+    {% for field in LoginForm %}
+    <label>{{field.label}}</label>
+    <p>{{field|add_class:"form-control"}}</p>
+    {% endfor %}
 
-    <button class="btn btn-primary "type="submit" name="btnLogin" value="Entrar">
-        <span class="glyphicon glyphicon-search" aria-hidden="true">&nbsp;</span>Entrar 
+    <button class="btn btn-primary " type="submit" name="btnLogin" value="Entrar">
+        <span class="glyphicon glyphicon-search" aria-hidden="true">&nbsp;</span>Entrar
     </button>
 
     <a href="javascript:history.go(-1)" class="btn btn-danger" role="button">
-    <span class="glyphicon glyphicon-remove-circle" aria-hidden="true">&nbsp;</span>Cancelar
-</a>
+        <span class="glyphicon glyphicon-remove-circle" aria-hidden="true">&nbsp;</span>Cancelar
+    </a>
 </form>
-
 
 
 {% endblock %}

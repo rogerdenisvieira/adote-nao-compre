@@ -1,11 +1,12 @@
-from django.shortcuts import render, redirect
+from django.conf import settings
+from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
-from django.contrib import messages
-from AdoteNaoCompreSITE.models.user_extras import  User_extras
-from AdoteNaoCompreSITE.forms import LoginForm, DogForm, UserForm
+from django.shortcuts import render, redirect
+
 from AdoteNaoCompreSITE.controllers import home_controller, account_controller
-from django.conf import settings
+from AdoteNaoCompreSITE.forms import LoginForm
+from AdoteNaoCompreSITE.models.user_extras import User_extras
 
 
 def login_user(request):
@@ -16,13 +17,13 @@ def login_user(request):
         # verifica se o usuário existe
         if User.objects.filter(username=username).exists():
 
-            #guarda o usuário que está tentando entrar
+            # guarda o usuário que está tentando entrar
             user_to_lock = User.objects.get(username=request.POST['username'])
 
-            #retorna as informações extras do usuário
+            # retorna as informações extras do usuário
             extra = User_extras.objects.get(IdPai=user_to_lock)
 
-            #verifica se a contagem é menos que a do arquivo de configuração
+            # verifica se a contagem é menos que a do arquivo de configuração
             if extra.Tentativas < getattr(settings, "TENTATIVAS_LOGIN", None):
 
                 # tenta autenticar

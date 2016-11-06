@@ -1,11 +1,12 @@
-from django.shortcuts import render, redirect
-from AdoteNaoCompreSITE.forms import UserForm, ExtraInfoForm
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+from django.shortcuts import render, redirect
+
+from AdoteNaoCompreSITE.controllers import user_controller
+from AdoteNaoCompreSITE.forms import UserForm, ExtraInfoForm
 from AdoteNaoCompreSITE.models.dog import Dog
 from AdoteNaoCompreSITE.models.user_extras import User_extras
-from AdoteNaoCompreSITE.controllers import user_controller
-from django.contrib.auth.models import User
-from django.contrib import messages
 
 
 def create(request):
@@ -15,12 +16,12 @@ def create(request):
 
         if form.is_valid():
             User.objects.create_user(
-                    username=request.POST['username'],
-                    first_name=request.POST['first_name'],
-                    last_name=request.POST['last_name'],
-                    password=request.POST['password'],
-                    email=request.POST['email']
-                )
+                username=request.POST['username'],
+                first_name=request.POST['first_name'],
+                last_name=request.POST['last_name'],
+                password=request.POST['password'],
+                email=request.POST['email']
+            )
 
             user = User.objects.get(username=request.POST['username'])
 
@@ -32,11 +33,11 @@ def create(request):
             return render(request, 'home.html', {})
         else:
             print(form.errors)
-                        
+
     # se for GET, devolve a pagina de criação do usuario
     else:
         form = UserForm()
-        
+
     return render(request, 'user/create.html', {'UserForm': form})
 
 
@@ -48,14 +49,14 @@ def show_profile(request):
         extra = User_extras.objects.get(IdPai=user)
 
         dto = {
-                'Nome': user.first_name + ' ' + user.last_name,
-                'E-mail': user.email,
-                'Cidade': extra.Cidade,
-                'Estado': extra.IdEstado,
-                'CEP': extra.CEP,
-                'Telefone': extra.Telefone,
-                'Celular' : extra.Celular
-            }
+            'Nome': user.first_name + ' ' + user.last_name,
+            'E-mail': user.email,
+            'Cidade': extra.Cidade,
+            'Estado': extra.IdEstado,
+            'CEP': extra.CEP,
+            'Telefone': extra.Telefone,
+            'Celular': extra.Celular
+        }
         return render(request, 'user/profile.html', {'dto': dto.items(), 'caes': caes})
 
 

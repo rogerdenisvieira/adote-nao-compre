@@ -1,5 +1,5 @@
-from django.db import models
 from django.contrib.auth.models import User
+from django.db import models
 
 
 class Advertisement(models.Model):
@@ -10,5 +10,3 @@ class Advertisement(models.Model):
     DataRegistro = models.DateTimeField(null=True)
     Email = models.CharField(blank=True, null=True, max_length=100)
     Telefone = models.IntegerField(blank=True, null=True)
-
-

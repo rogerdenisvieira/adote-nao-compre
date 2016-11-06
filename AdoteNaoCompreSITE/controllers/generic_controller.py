@@ -15,6 +15,6 @@ def unauthorized_handler(request):
     messages.warning(request, "Voce nao tem permissao para acessar a pagina solicitada.", extra_tags='alert-danger')
     return render(request, 'home.html', {})
 
-def pageNotFoundHandler(request):
- 	return render(request, '404.html', {})
 
+def pageNotFoundHandler(request):
+    return render(request, '404.html', {})

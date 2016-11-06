@@ -4,37 +4,36 @@
 
 {% load static %}
 
-<h1>Meu Perfil<h1>
+<h1>Meu Perfil
+    <h1>
 
-<div class="container">
-    <table class="table table-striped">
+        <div class="container">
+            <table class="table table-striped">
 
-        <tbody>
-        {% for key, value in dto %}
+                <tbody>
+                {% for key, value in dto %}
                 <tr>
                     <td>
                         {{ key }}
                     </td>
                     <td>
-                            {{ value }}
+                        {{ value }}
                     </td>
                 </tr>
-            {% endfor %}
+                {% endfor %}
 
 
+                </tbody>
+            </table>
 
+            <a href="javascript:history.go(-1)" class="btn btn-success" role="button">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true">&nbsp;</span>Voltar
+            </a>
 
-        </tbody>
-    </table>
+            <a href="{% url 'extras' %}" class="btn btn-default" role="button" id="link_edit_extra">
+                <span class="glyphicon glyphicon-user" aria-hidden="true">&nbsp;</span>Editar Informação Contato
+            </a>
 
-                        <a href="javascript:history.go(-1)" class="btn btn-success" role="button">
-                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true">&nbsp;</span>Voltar
-                        </a>
+        </div>
 
-                                                <a href="{% url 'extras' %}" class="btn btn-default" role="button" id="link_edit_extra">
-                            <span class="glyphicon glyphicon-user" aria-hidden="true">&nbsp;</span>Editar Informação Contato
-                        </a>
-
-</div>
-
-{% endblock %}
+        {% endblock %}

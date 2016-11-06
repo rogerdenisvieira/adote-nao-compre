@@ -2,71 +2,87 @@
 {% load static %}
 {% block content %}
 
+<body>
 
-	{% if messages %}
-	    {% for message in messages %}
-	        <div class="alert {{message.extra_tags}}">
-	            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-	            <strong> {{ message }}</strong>
-	        </div>
-	    {% endfor %}
-	{% endif %}
-	 
+{% if messages %}
+{% for message in messages %}
+<div class="alert {{message.extra_tags}}">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong> {{ message }}</strong>
+</div>
+{% endfor %}
+{% endif %}
+
 
 <h1> Hot Dogs </h1>
-<marquee>
-{% for c in caes %}
 
-            <div class="col-lg-4 col-sm-6 text-center">
-                <img class="img-circle img-responsive img-center" style="width: 200px; height: 200px" src="{{ MEDIA_URL }}{{ c.Foto.url }}" alt="">
-                <h3>{{ c.Nome }}
-                    <small></small>
-                </h3>
-                <p>{{ c.Info }}</p>
-            </div>
+<div class="autoplay">
+    {% for c in caes %}
+    <div>
+        <a href="{% url 'dog_show' id=c.Id %}">
+            <img class="" style="width: 200px; height: 200px"
+                 src="{{ MEDIA_URL }}{{ c.Foto.url }}" alt="">
 
-{% endfor %}
-    </marquee>
+        </a>
+    </div>
+
+    {% endfor %}
+</div>
 
 
+<script type="text/javascript">
+
+$(document).ready(function(){
+    $('.autoplay').slick({
+    variableWidth: true,
+    variableHeight: true,
+      slidesToShow: 3,
+      slidesToScroll: 1,
+      autoplay: true,
+      autoplaySpeed: 2000,
+});
+});
+
+
+
+</script>
 
 
 {% for post in posts %}
 
-	<div class="row">
+<div class="row">
 
-            <!-- Blog Post Content Column -->
-            <div class="col-lg-12">
+    <!-- Blog Post Content Column -->
+    <div class="col-lg-12">
 
-                <!-- Blog Post -->
+        <!-- Blog Post -->
 
-                <!-- Title -->
-                <h1>{{ post.Titulo }}</h1>
+        <!-- Title -->
+        <h1>{{ post.Titulo }}</h1>
 
-                <!-- Author -->
-                <p class="lead">
-                    por <a href="#">{{ user.username }}</a>
-                </p>
+        <!-- Author -->
+        <p class="lead">
+            por <a href="#">{{ user.username }}</a>
+        </p>
 
-                <hr>
+        <hr>
 
-                <!-- Date/Time -->
-                <p><span class="glyphicon glyphicon-time"></span> Postado em {{ post.DataPublicacao }}</p>
+        <!-- Date/Time -->
+        <p><span class="glyphicon glyphicon-time"></span> Postado em {{ post.DataPublicacao }}</p>
 
-                <hr>
+        <hr>
 
 
-                <!-- Post Content -->
-                <p class="lead">{{ post.Texto }}</p>
+        <!-- Post Content -->
+        <p class="lead">{{ post.Texto }}</p>
 
-                <hr>
-              </div>
-            </div>
+        <hr>
+    </div>
+</div>
 
 {% endfor %}
 
-
-
+</body>
 {% endblock %}
 
 

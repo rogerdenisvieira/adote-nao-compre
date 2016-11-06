@@ -1,11 +1,13 @@
-from django.shortcuts import render, redirect, get_object_or_404
-from AdoteNaoCompreSITE.models.dog import Dog
-from AdoteNaoCompreSITE.models.breed import Breed
-from AdoteNaoCompreSITE.forms import DogForm
-from AdoteNaoCompreSITE.controllers import home_controller, dog_controller
+from datetime import datetime
+
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from datetime import datetime
+from django.shortcuts import render, redirect, get_object_or_404
+
+from AdoteNaoCompreSITE.controllers import home_controller, dog_controller
+from AdoteNaoCompreSITE.forms import DogForm
+from AdoteNaoCompreSITE.models.breed import Breed
+from AdoteNaoCompreSITE.models.dog import Dog
 
 
 def search(request):
@@ -75,20 +77,20 @@ def list(request):
         return render(request, 'dog/list.html', {'user': user, 'caes': caes})
 
 
-def show(request,id):
+def show(request, id):
     dog = get_object_or_404(Dog, Id=id)
     owner = User.objects.get(dog=dog)
     breed = Breed.objects.get(dog=dog)
 
     dto = {
-            'Nome': dog.Nome,
-            'Idade': dog.Idade,
-            'Informação': dog.Info,
-            'Interesse' : dog.Interesse,
-            'Sexo': dog.Sexo,
-            'Data de Registro': dog.DataRegistro,
-            'Raça': breed.Info
-        }
+        'Nome': dog.Nome,
+        'Idade': dog.Idade,
+        'Informação': dog.Info,
+        'Interesse': dog.Interesse,
+        'Sexo': dog.Sexo,
+        'Data de Registro': dog.DataRegistro,
+        'Raça': breed.Info
+    }
 
     foto_url = dog.Foto
 
@@ -97,7 +99,7 @@ def show(request,id):
 
 @login_required
 def delete(request):
-    user = request.user   
+    user = request.user
     id = request.POST["id"]
     if user.is_authenticated():
         print(id)

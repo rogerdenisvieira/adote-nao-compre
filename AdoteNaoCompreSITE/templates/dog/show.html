@@ -6,9 +6,9 @@
 <html>
 <body>
 
-    <div class="col-md-3 col-sm-6 hero-feature">
+<div class="col-md-3 col-sm-6 hero-feature">
     <div class="thumbnail">
-        <img src="{{ MEDIA_URL }}{{ dog.Foto.url }}" style="width: 200px; height: 200px"  alt="">
+        <img src="{{ MEDIA_URL }}{{ dog.Foto.url }}" style="width: 200px; height: 200px" alt="">
     </div>
 </div>
 
@@ -17,36 +17,36 @@
 
         <tbody>
         {% for key, value in dto %}
-                <tr>
-                    <td>
-                        {{ key }}
-                    </td>
-                    <td>
-                        {{ value }}
-                    </td>
-                </tr>
-            {% endfor %}
+        <tr>
+            <td>
+                {{ key }}
+            </td>
+            <td>
+                {{ value }}
+            </td>
+        </tr>
+        {% endfor %}
 
-                <tr>                 
-                    <td>
-                        Protetor
-                    </td>
-                    <td>
-                            <a href="{% url 'user_show' id=owner.id %}">{{ owner.first_name }}</a>
-                    </td>
-                </tr>
+        <tr>
+            <td>
+                Protetor
+            </td>
+            <td>
+                <a href="{% url 'user_show' id=owner.id %}">{{ owner.first_name }}</a>
+            </td>
+        </tr>
         </tbody>
     </table>
 
-                        <a href="javascript:history.go(-1)" class="btn btn-success" role="button">
-                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true">&nbsp;</span>Voltar
-                        </a>
+    <a href="javascript:history.go(-1)" class="btn btn-success" role="button">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true">&nbsp;</span>Voltar
+    </a>
 
-                        {% if dog.Interesse == True %}
-                        <a href="#" class="btn btn-primary" disabled>Interesse</a>
-                        {% else %}
-                        <a href="#" class="btn btn-primary" name="btnRegInteresse" data-id="{{ dog.Id }}">Interesse</a>
-                        {% endif %}
+    {% if dog.Interesse == True %}
+    <a href="#" class="btn btn-primary" disabled>Interesse</a>
+    {% else %}
+    <a href="#" class="btn btn-primary" name="btnRegInteresse" data-id="{{ dog.Id }}">Interesse</a>
+    {% endif %}
 
 </div>
 
@@ -88,10 +88,9 @@ $(document).ready(function() {
         });
     });
 });
+
+
 </script>
-
-
-
 
 
 </body>

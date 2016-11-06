@@ -5,31 +5,30 @@
 
 
 <form class="form-inline" action="{% url 'user_create' %}" method="post" enctype="multipart/form-data">
-{% csrf_token %}
+    {% csrf_token %}
 
 
-{% for field in UserForm %}
-	{% if field.label != "Foto" and field.label != "Info" %}
-        
-            {{ field.errors}}
-		<label>
-			{{field.label}}
-		</label>
-		<p>
-			{{field|add_class:"form-control"}}
-		</p>
+    {% for field in UserForm %}
+    {% if field.label != "Foto" and field.label != "Info" %}
+
+    {{ field.errors}}
+    <label>
+        {{field.label}}
+    </label>
+    <p>
+        {{field|add_class:"form-control"}}
+    </p>
 
 
+    {% endif %}
+    {% endfor %}
 
-	{% endif %}
-{% endfor %}
 
+    <input type="submit" class="btn btn-primary" value="Enviar"/>
 
-<input type="submit" class="btn btn-primary" value="Enviar"/>
-
-                     <a href="/" class="btn btn-danger" role="button">
-                            <span class="glyphicon glyphicon-remove-circle" aria-hidden="true">&nbsp;</span>Cancelar
-                        </a>
+    <a href="/" class="btn btn-danger" role="button">
+        <span class="glyphicon glyphicon-remove-circle" aria-hidden="true">&nbsp;</span>Cancelar
+    </a>
 </form>
 <script>
     var password = document.getElementById("id_password")
@@ -45,6 +44,8 @@
 
     password.onchange = validatePassword;
     confirm_password.onkeyup = validatePassword;
+
+
 
 </script>
 

@@ -12,48 +12,48 @@
 <div class="container">
     <table class="table table-striped">
         <thead>
-            <tr>
-                <th>Cão</th>
-                <th>Protetor</th>
-                <th>Interessado</th>
-                <th>Data do Registro</th>
-                <th>Ações</th>
-            </tr>
+        <tr>
+            <th>Cão</th>
+            <th>Protetor</th>
+            <th>Interessado</th>
+            <th>Data do Registro</th>
+            <th>Ações</th>
+        </tr>
         </thead>
 
         <tbody>
-            {% for l in listaLinhas %}
-                <tr>
+        {% for l in listaLinhas %}
+        <tr>
 
 
-                    <td>
-                       <a href="{% url 'dog_show' id=l.1 %}"> {{ l.0 }} </a>
-                    </td>
+            <td>
+                <a href="{% url 'dog_show' id=l.1 %}"> {{ l.0 }} </a>
+            </td>
 
-                    <td>
-                       <a href="{% url 'user_show' id=l.3 %}"> {{ l.2 }} </a>
-                    </td>
+            <td>
+                <a href="{% url 'user_show' id=l.3 %}"> {{ l.2 }} </a>
+            </td>
 
-                    <td>
-                        <a href="{% url 'user_show' id=l.5 %}"> {{ l.4 }} </a>
-                    </td>
+            <td>
+                <a href="{% url 'user_show' id=l.5 %}"> {{ l.4 }} </a>
+            </td>
 
-                    <td>
-                        {{ l.6 }} 
-                    </td>
+            <td>
+                {{ l.6 }}
+            </td>
 
-                    <td>
-                        <a href="#" class="btn btn-info" role="button">
-                            <span class="glyphicon glyphicon-info-sign" aria-hidden="true">&nbsp;</span>Detalhes
-                        </a>
+            <td>
+                <a href="#" class="btn btn-info" role="button">
+                    <span class="glyphicon glyphicon-info-sign" aria-hidden="true">&nbsp;</span>Detalhes
+                </a>
 
-                        <a href="#" name="delete" data-id="" class="btn btn-danger">
-                            <span class="glyphicon glyphicon-remove-circle" aria-hidden="true">&nbsp;</span>Remover
-                        </a>
-                    </td>
+                <a href="#" name="delete" data-id="" class="btn btn-danger">
+                    <span class="glyphicon glyphicon-remove-circle" aria-hidden="true">&nbsp;</span>Remover
+                </a>
+            </td>
 
-                </tr>
-            {% endfor %}
+        </tr>
+        {% endfor %}
         </tbody>
     </table>
 
@@ -62,10 +62,6 @@
     </a>
 
 </div>
-
-
-
-    
 
 
 <script type="text/javascript">
@@ -96,12 +92,9 @@ $(document).ready(function() {
         });
     });
 });
+
+
 </script>
-
-
-
-
-
 
 
 {% endblock %}

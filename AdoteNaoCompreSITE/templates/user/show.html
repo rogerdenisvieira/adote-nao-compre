@@ -4,33 +4,32 @@
 
 {% load static %}
 
-<h1>Perfil<h1>
+<h1>Perfil
+    <h1>
 
-<div class="container">
-    <table class="table table-striped">
+        <div class="container">
+            <table class="table table-striped">
 
-        <tbody>
-        {% for key, value in dto %}
+                <tbody>
+                {% for key, value in dto %}
                 <tr>
                     <td>
                         {{ key }}
                     </td>
                     <td>
-                            {{ value }}
+                        {{ value }}
                     </td>
                 </tr>
-            {% endfor %}
+                {% endfor %}
 
 
+                </tbody>
+            </table>
 
+            <a href="javascript:history.go(-1)" class="btn btn-success" role="button">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true">&nbsp;</span>Voltar
+            </a>
 
-        </tbody>
-    </table>
+        </div>
 
-                        <a href="javascript:history.go(-1)" class="btn btn-success" role="button">
-                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true">&nbsp;</span>Voltar
-                        </a>
-
-</div>
-
-{% endblock %}
+        {% endblock %}

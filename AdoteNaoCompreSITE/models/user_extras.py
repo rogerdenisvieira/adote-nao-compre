@@ -1,5 +1,6 @@
-from django.db import models
 from django.contrib.auth.models import User
+from django.db import models
+
 from AdoteNaoCompreSITE.models.state import State
 
 
@@ -12,5 +13,3 @@ class User_extras(models.Model):
     Celular = models.PositiveIntegerField(blank=True, null=True)
     CEP = models.PositiveIntegerField(blank=True, null=True)
     Tentativas = models.PositiveIntegerField(blank=False, null=False, default=0)
-
-
