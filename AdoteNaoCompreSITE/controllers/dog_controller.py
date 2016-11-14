@@ -51,18 +51,26 @@ def create(request):
 def edit(request, id):
     dog = get_object_or_404(Dog, Id=id)
     if request.method == "POST":
-        print("este foi um POST")
-        form = DogForm(request.POST, request.FILES, instance=dog)
+
+        #valida se a controller está recebendo arquivos para fazer o binding
+        if len(request.FILES) != 0:
+            form = DogForm(request.POST, request.FILES, instance=dog)
+            dog.Foto = request.FILES['Foto']
+        else:
+            form = DogForm(request.POST, instance=dog)
+
         if form.is_valid():
             dog = form.save(commit=False)
             dog.IdProtetor = request.user
             dog.Nome = request.POST['Nome']
             dog.Info = request.POST['Info']
-            dog.Foto = request.FILES['Foto']
             dog.Idade = request.POST['Idade']
             dog.Sexo = request.POST['Sexo']
+
+
             dog.save()
             return redirect(home_controller.index)
+
     else:
         print("este foi um GET")
         form = DogForm(instance=dog)
@@ -92,8 +100,6 @@ def show(request, id):
         'Raça': breed.Info
     }
 
-    foto_url = dog.Foto
-
     return render(request, 'dog/show.html', {'dto': dto.items(), 'owner': owner, 'dog': dog})
 
 
@@ -104,5 +110,5 @@ def delete(request):
     if user.is_authenticated():
         print(id)
         Dog.objects.filter(Id=id).delete()
-        caes = Dog.objects.filter(IdProtetor=request.user)
         return redirect(dog_controller.list)
+
