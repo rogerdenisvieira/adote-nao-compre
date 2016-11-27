@@ -8,6 +8,8 @@ from AdoteNaoCompreSITE.controllers import home_controller, dog_controller
 from AdoteNaoCompreSITE.forms import DogForm
 from AdoteNaoCompreSITE.models.breed import Breed
 from AdoteNaoCompreSITE.models.dog import Dog
+from AdoteNaoCompreSITE.models.size import Size
+from AdoteNaoCompreSITE.models.behavior import Behavior
 
 
 def search(request):
@@ -89,6 +91,9 @@ def show(request, id):
     dog = get_object_or_404(Dog, Id=id)
     owner = User.objects.get(dog=dog)
     breed = Breed.objects.get(dog=dog)
+    behavior = Behavior.objects.get(dog=dog)
+    size = Size.objects.get(dog=dog)
+
 
     dto = {
         'Nome': dog.Nome,
@@ -97,7 +102,9 @@ def show(request, id):
         'Interesse': dog.Interesse,
         'Sexo': dog.Sexo,
         'Data de Registro': dog.DataRegistro,
-        'Raça': breed.Info
+        'Raça': breed.Info,
+        'Porte': size.Info,
+        'Comportamento': behavior.Info
     }
 
     return render(request, 'dog/show.html', {'dto': dto.items(), 'owner': owner, 'dog': dog})

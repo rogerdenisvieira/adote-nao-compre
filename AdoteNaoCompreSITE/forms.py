@@ -6,6 +6,8 @@ from AdoteNaoCompreSITE.models.breed import Breed
 from AdoteNaoCompreSITE.models.dog import Dog
 from AdoteNaoCompreSITE.models.state import State
 from AdoteNaoCompreSITE.models.user_extras import User_extras
+from AdoteNaoCompreSITE.models.size import Size
+from AdoteNaoCompreSITE.models.behavior import Behavior
 
 
 class DogForm(ModelForm):
@@ -14,10 +16,14 @@ class DogForm(ModelForm):
         fields = "__all__"
         exclude = ["IdProtetor", "Interesse", "DataRegistro"]
         breed = ModelChoiceField(queryset=Breed.objects.all(), empty_label='')
+        size = ModelChoiceField(queryset=Size.objects.all(), empty_label='')
+        behavior = ModelChoiceField(queryset=Behavior.objects.all(), empty_label='')
 
         labels = {
             'Info': ('Informações'),
-            'IdRaca': ('Raça')
+            'IdRaca': ('Raça'),
+            'IdTamanho': ('Porte'),
+            'IdComportamento': ('Comportamento')
         }
 
 
