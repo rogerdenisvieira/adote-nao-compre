@@ -1,1 +1,1 @@
-web: gunicorn adotenaocompre.wsgi
+web: python AdoteNaoCompre/manage.py runserver
