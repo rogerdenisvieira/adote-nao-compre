@@ -3,6 +3,5 @@
   "description": "Site para adoção de cães.",
   "image": "heroku/python",
   "repository": "https://github.com/rogervieira/AdoteNaoCompre.git",
-  "keywords": ["python", "django" ],
-  "addons": [ "heroku-postgresql" ]
+  "keywords": ["python", "django" ]
 }
