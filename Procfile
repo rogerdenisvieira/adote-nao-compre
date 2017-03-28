@@ -1,1 +1,1 @@
-web: python AdoteNaoCompre/manage.py runserver
+web: python manage.py runserver
